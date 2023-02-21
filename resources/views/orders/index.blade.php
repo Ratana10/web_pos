@@ -2,118 +2,14 @@
 @section('title', 'Product')
 @section('content')
     <div class="container">
-        <form action="{{ route('order.addNew')}}" method="post">
-            @csrf
-            <div class="row">
-                <div class="col-md-9">
-                    <div class="card">
-                        <div class="card-header" style="background-color: royalblue; color: white" >
-                            <h4 style="float: left; ">ORDER PRODUCT</h4>
+        @livewire('order')
 
-                        </div>
-
-                        <div class="card-body">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th style="width: 30%">Product Name</th>
-                                        <th>Qty</th>
-                                        <th>Price</th>
-                                        <th>Dis</th>
-                                        <th>Total</th>
-                                        <th><a  class="btn btn-success btn-sm btnAdd"><i class="fa fa-plus"></i></a></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="tableOrder">
-                                    <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            <select name="product_id[]" id="product_id" class="form-control product_id">
-                                                <option value="">Selected Item</option>
-                                                @foreach ($products as $item)
-                                                    <option data-price="{{ $item->price }}" value="{{ $item->id}}">{{ $item->product_name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="number" name="quantity[]" id="quantity" class="form-control quantity">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="price[]" id="price" class="form-control price">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="discount[]" id="discount" class="form-control discount">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="total[]" id="total" class="form-control total">
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger btn-sm btnDelete"><i class="fa fa-times"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>
-                                Total :
-                                <input type="hidden" name="total_amount1" class="total_amount1">
-                                <span class="total_amount" name="total_amount">0.00</span>
-                            </h4>
-                        </div>
-                        <div class="card-body">
-                           <div class="btn-group-sm mb-3">
-                                <button type="button" class="btn btn-dark " onclick="printReceiptContent('print')">
-                                    <i class="fa fa-print"></i>
-                                    Print
-                                </button>
-                                <button type="button" class="btn btn-primary" onclick="PrintReceiptContent('print')">
-                                    <i class="fa fa-print"></i>
-                                    History
-                                </button>
-                                <button type="button" class="btn btn-danger" onclick="PrintReceiptContent('print')">
-                                    <i class="fa fa-print"></i>
-                                    Receipt
-                                </button>
-                           </div>
-                            <div class="form-group">
-                                <label >Customer Name</label>
-                                <input type="text" name="customer_name" id="" class="form-control">
-                                <label >Customer Phone</label>
-                                <input type="text" name="customer_phone" id="" class="form-control">
-
-                            </div>
-                            <div class="form-group">
-                                <label >Payment</label>
-                                <input type="number" name="payment" id="" class="form-control payment">
-                            </div>
-                            <div class="form-group">
-                                <label >Cash Return</label>
-                                <input type="number" name="cash_return" id="" class="form-control cash_return" readonly>
-                            </div>
-                            <div class="d-grid gap-2 mt-4">
-                                <button type="submit" class="btn btn-success" type="button">Save</button>
-                                <button class="btn btn-primary" type="button">Calcuate</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
         <div class="modals">
             <div id="print">
                 @include('reports.receipt')
             </div>
         </div>
-
+        
     </div>
 
     <script>
