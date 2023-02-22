@@ -11,23 +11,23 @@
                     <div class="modal-body">
                         <div class="form-group mb-2">
                             <label>Name</label>
-                            <input type="text" name="name" id="" class="form-control" autofocus>
+                            <input type="text" name="name"  class="form-control" autofocus>
                         </div>
                         <div class="form-group mb-2">
                             <label>Email</label>
-                            <input type="text" name="email" id="" class="form-control">
+                            <input type="text" name="email"  class="form-control">
                         </div>
                         <div class="form-group mb-2">
                             <label>Password</label>
-                            <input type="password" name="password" id="" class="form-control">
+                            <input type="password" name="password"  class="form-control">
                         </div>
                         <div class="form-group mb-2">
                             <label>Confirm Password</label>
-                            <input type="password" name="confirm_password" id="" class="form-control">
+                            <input type="password" name="confirm_password"  class="form-control">
                         </div>
                         <div class="form-group mb-2">
                             <label>Role</label>
-                            <select name="is_admin" id="" class="form-control">
+                            <select name="is_admin" class="form-control">
                                 <option value="1">Admin</option>
                                 <option value="2">Cashier</option>
                             </select>

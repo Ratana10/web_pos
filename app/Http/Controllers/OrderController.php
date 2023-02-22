@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Order_Detail;
 use App\Models\Transaction;
@@ -24,7 +25,7 @@ class OrderController extends Controller
 
     }
     function store(Request $request){
-
+        // dd($request->all());
         DB::transaction(function() use ($request) {
 
             //oder modal
@@ -46,7 +47,7 @@ class OrderController extends Controller
                 $order_detail->discount = $request->discount[$i];
                 $order_detail->save();
             }
-            
+
             // transaction modal
             $transaction = new Transaction;
             $transaction->order_id = $order_id;
@@ -55,8 +56,10 @@ class OrderController extends Controller
             $transaction->payment_method = 'cash';
             $transaction->user_id = session()->get('user')->id;
             $transaction->transac_date = date("Y-m-d");
-            $transaction->transac_amount = $request->total_amount1;
+            $transaction->transac_amount = $request->total_amount;
             $transaction->save();
+
+            Cart::where('user_id', session()->get('user')->id)->delete();
 
             //last order history
             // $products = DB::tabele('products')->get();

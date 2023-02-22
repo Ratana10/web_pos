@@ -11,6 +11,8 @@ class Order extends Component
 {
     public $count = 0, $products = [], $product_id, $message, $carts;
 
+    public $payment, $cash_return ;
+
     public function increaseQty($id)
     {
         $cart = Cart::find($id);
@@ -77,6 +79,11 @@ class Order extends Component
 
     public function render()
     {
+        if($this->payment != ''){
+            $this->cash_return =  $this->payment - $this->carts->sum('product_price');
+
+        }
+
         return view('livewire.order');
     }
 }

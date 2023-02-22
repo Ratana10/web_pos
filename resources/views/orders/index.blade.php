@@ -4,15 +4,16 @@
     <div class="container">
         @livewire('order')
 
+
         <div class="modals">
             <div id="print">
                 @include('reports.receipt')
             </div>
         </div>
-        
+
     </div>
 
-    <script>
+    {{-- <script>
         $(document).ready(function(){
 
             $(document).on('click', '.btnAdd', function(){
@@ -135,6 +136,6 @@
                 }, 8000);
 
             }
-    </script>
+    </script> --}}
 
 @endsection
