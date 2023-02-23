@@ -33,6 +33,10 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Incoming</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ route('product.barcode')}}"><i class="fa fa-barcode"></i>Barcode</a>
+          </li>
         </ul>
 
         <a href="{{ route('user.logout') }}" class="btn btn-outline-success">Logout</a>

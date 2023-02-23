@@ -22,6 +22,7 @@ Route::get('/login', [LoginController::class, 'login'])->name('user.login');
 Route::post('/login', [LoginController::class, 'login'])->name('user.login');
 
 Route::middleware('Login')->group(function () {
+
     Route::prefix('user')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('user.index');
         Route::post('/add', [UserController::class, 'store'])->name('user.addNew');
@@ -36,6 +37,7 @@ Route::middleware('Login')->group(function () {
         Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
         Route::put('/update', [ProductController::class, 'update'])->name('product.update');
         Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+        Route::get('/barcode', [ProductController::class, 'ProductBarcode'])->name('product.barcode');
     });
 
     Route::prefix('supplier')->group(function () {
